@@ -1,13 +1,11 @@
 /**
- * dreamTimer.js — Estado del sueño + protección contra caídas.
+ * dreamTimer.js — Estado del sueño + protección contra caídas al vacío (regreso al Overworld).
  *
- * CAMBIOS IMPORTANTES vs v1:
- *   · No hay expulsión forzada por temporizador. La única salida es el
- *     Portal de Regreso o morir (respawn en el Overworld).
- *   · El tick monitorea el suelo: si el jugador cae por debajo de floorY-10,
- *     lo regresa al spawn del nivel (previene caídas al vacío).
- *   · La distorsión progresiva ya no lleva a la expulsión — solo aplica
- *     efectos crecientes como presión de tiempo indirecta.
+ * CAMBIOS:
+ *   · Se preserva el returnLoc original al cambiar de nivel con el control,
+ *     evitando que al pulsar "Despertar" se vuelva a la dimensión anterior en vez del Overworld.
+ *   · Si el jugador cae al vacío, es devuelto automáticamente al Overworld (despertar).
+ *   · Sonido inmersivo al entrar.
  */
 import { system, world } from "@minecraft/server";
 import { DREAM_TIMER, DISTORTION, NAMESPACE } from "../config.js";
@@ -42,7 +40,11 @@ export async function enterLevel(player, levelId, entryPoint) {
     const t      = levelTarget(level);
     const record = await buildLevel(level);
 
-    const returnLoc = {
+    // FIX: Preservar el returnLoc original si ya estábamos en un sueño,
+    // para que al usar "Despertar / Volver al Overworld" siempre regrese al Overworld
+    // original y no a la dimensión intermedia anterior.
+    const currentSt = state.get(player.id);
+    const returnLoc = currentSt?.returnLoc ?? {
       dimId: player.dimension.id,
       x: entryPoint.x, y: entryPoint.y, z: entryPoint.z,
     };
@@ -72,6 +74,7 @@ export async function enterLevel(player, levelId, entryPoint) {
     player.teleport(record.spawn, { dimension: t.dim });
 
     try { player.runCommandAsync(`fog @s push ${level.theme.fog}`); } catch (_) {}
+    player.playSound("dreamcore:enter_level", { volume: 1.2, pitch: 1 });
     player.playSound("minecraft:portal.travel", { volume: 1, pitch: 1 });
 
     player.onScreenDisplay.setTitle(level.name, {
@@ -84,7 +87,7 @@ export async function enterLevel(player, levelId, entryPoint) {
     // Pista retardada (5 s después)
     system.runTimeout(() => {
       if (getDreamState(player)?.levelId === level.id) {
-        tell(player, "§8El portal de regreso está escondido en algún lugar de este nivel...");
+        tell(player, "§8El portal de regreso está escondido y emite una señal luminosa...");
       }
     }, 100);
 
@@ -115,15 +118,11 @@ function tick() {
 
     const elapsedSec = (Date.now() - st.enteredAt) / 1000;
 
-    // ── Protección contra caídas al vacío ──────────────────────────────────
-    const safeY = (st.floorY ?? 64) - 10;
+    // ── Protección contra caídas al vacío: regresar al Overworld ───────────
+    const safeY = (st.floorY ?? 64) - 15;
     if (player.location.y < safeY) {
-      const built   = getBuiltLevel(st.levelId);
-      const spawn   = built?.spawn ?? { x: st.targetX, y: (st.floorY ?? 64) + 2, z: st.targetZ };
-      try {
-        player.teleport(spawn, { dimension: player.dimension });
-        tell(player, "§8El vacío te devolvió...");
-      } catch (_) {}
+      tell(player, "§c[Dreamcore] ¡Caíste al vacío y despertaste en el Overworld!");
+      exitLevel(player, false);
       continue;
     }
 
@@ -142,7 +141,6 @@ function tick() {
 function isInDream(player, st) {
   if (player.dimension.id !== st.targetDimId) return false;
   if (st.fallback) {
-    // En fallback (coordenadas lejanas), límite amplio para niveles infinitos
     if (Math.abs(player.location.x - st.targetX) > 10000) return false;
     if (Math.abs(player.location.z - st.targetZ) > 10000) return false;
   }
@@ -201,11 +199,16 @@ export function exitLevel(player, wokeUp) {
     }
   }
 
-  if (wokeUp) {
-    player.playSound("minecraft:portal.travel", { volume: 1, pitch: 0.6 });
-    player.onScreenDisplay.setTitle("Despertaste.", {
-      subtitle: "Fue solo un sueño... ¿o no?",
-      fadeInDuration: 15, stayDuration: 60, fadeOutDuration: 25,
+  try {
+    player.camera.fade({
+      fadeColor: { red: 1, green: 1, blue: 1 },
+      fadeTime: { fadeInTime: 0.4, holdTime: 0.2, fadeOutTime: 0.6 },
     });
-  }
+  } catch (_) {}
+
+  player.playSound("dreamcore:wake", { volume: 1.2, pitch: 1 });
+  player.onScreenDisplay.setTitle("Despertaste.", {
+    subtitle: "Has vuelto a la realidad del Overworld.",
+    fadeInDuration: 15, stayDuration: 60, fadeOutDuration: 25,
+  });
 }
