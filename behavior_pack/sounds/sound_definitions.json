@@ -1,0 +1,53 @@
+{
+  "format_version": "1.14.0",
+  "sound_definitions": {
+    "dreamcore:hum_fluorescent": {
+      "category": "ambient",
+      "sounds": [ { "name": "sounds/hum_fluorescent", "stream": true, "volume": 0.6 } ]
+    },
+    "dreamcore:hum_pool": {
+      "category": "ambient",
+      "sounds": [ { "name": "sounds/hum_pool", "stream": true, "volume": 0.5 } ]
+    },
+    "dreamcore:hum_low": {
+      "category": "ambient",
+      "sounds": [ { "name": "sounds/hum_low", "stream": true, "volume": 0.5 } ]
+    },
+    "dreamcore:hum_loud": {
+      "category": "ambient",
+      "sounds": [ { "name": "sounds/hum_loud", "stream": true, "volume": 1.0 } ]
+    },
+    "dreamcore:music_box": {
+      "category": "music",
+      "sounds": [ { "name": "sounds/music_box", "stream": true, "volume": 0.4 } ]
+    },
+    "dreamcore:heartbeat": {
+      "category": "ambient",
+      "sounds": [ { "name": "sounds/heartbeat", "volume": 1.0 } ]
+    },
+    "dreamcore:footsteps_distant": {
+      "category": "ambient",
+      "sounds": [ { "name": "sounds/footsteps_distant", "volume": 0.5 } ]
+    },
+    "dreamcore:enter_level": {
+      "category": "ambient",
+      "sounds": [ { "name": "sounds/enter_level", "volume": 1.0 } ]
+    },
+    "dreamcore:wake": {
+      "category": "ambient",
+      "sounds": [ { "name": "sounds/wake", "volume": 1.0 } ]
+    },
+    "dreamcore:portal_appear": {
+      "category": "ambient",
+      "sounds": [ { "name": "sounds/portal_appear", "volume": 0.6 } ]
+    },
+    "dreamcore:return_found": {
+      "category": "ambient",
+      "sounds": [ { "name": "sounds/return_found", "volume": 1.0 } ]
+    },
+    "dreamcore:portal_hum": {
+      "category": "ambient",
+      "sounds": [ { "name": "sounds/portal_hum", "stream": false, "volume": 0.5 } ]
+    }
+  }
+}

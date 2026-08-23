@@ -1,0 +1,23 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.faceless.idle": {
+      "loop": true,
+      "animation_length": 2.4,
+      "bones": {
+        "body": { "position": { "0.0": [0, 0, 0], "1.2": [0, -0.1, 0], "2.4": [0, 0, 0] } },
+        "head": { "rotation": { "0.0": [0, 0, 0], "1.2": [6, 0, 0], "2.4": [0, 0, 0] } }
+      }
+    },
+    "animation.faceless.walk": {
+      "loop": true,
+      "animation_length": 0.9,
+      "bones": {
+        "leftLeg": { "rotation": { "0.0": [26, 0, 0], "0.45": [-26, 0, 0], "0.9": [26, 0, 0] } },
+        "rightLeg": { "rotation": { "0.0": [-26, 0, 0], "0.45": [26, 0, 0], "0.9": [-26, 0, 0] } },
+        "leftArm": { "rotation": { "0.0": [-18, 0, 0], "0.45": [18, 0, 0], "0.9": [-18, 0, 0] } },
+        "rightArm": { "rotation": { "0.0": [18, 0, 0], "0.45": [-18, 0, 0], "0.9": [18, 0, 0] } }
+      }
+    }
+  }
+}

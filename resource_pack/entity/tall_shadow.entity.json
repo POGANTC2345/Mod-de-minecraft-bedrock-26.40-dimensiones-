@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "dreamcore:tall_shadow",
+      "materials": { "default": "entity_alphatest" },
+      "textures": { "default": "textures/entity/tall_shadow" },
+      "geometry": { "default": "geometry.tall_shadow" },
+      "animations": {
+        "idle": "animation.tall_shadow.idle",
+        "walk": "animation.tall_shadow.walk",
+        "look_at_target": "animation.common.look_at_target"
+      },
+      "scripts": {
+        "animate": [
+          "idle",
+          { "walk": "query.is_moving" },
+          "look_at_target"
+        ]
+      },
+      "render_controllers": [ "controller.render.tall_shadow" ],
+      "spawn_egg": {
+        "base_color": "#0a0a0a",
+        "overlay_color": "#2a2a2a"
+      }
+    }
+  }
+}

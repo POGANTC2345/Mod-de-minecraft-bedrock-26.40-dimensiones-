@@ -1,0 +1,15 @@
+## Dreamcore: Liminal Spaces
+tile.dreamcore:yellow_wallpaper.name=Yellow Wallpaper
+tile.dreamcore:wet_carpet.name=Wet Carpet
+tile.dreamcore:ceiling_tile.name=Ceiling Tile
+tile.dreamcore:faded_wallpaper.name=Faded Wallpaper
+tile.dreamcore:fluorescent_light.name=Fluorescent Light
+tile.dreamcore:portal_frame.name=Portal Frame
+
+entity.dreamcore:tall_shadow.name=Tall Shadow
+entity.dreamcore:faceless.name=The Faceless
+
+item.dreamcore:dream_remote.name=Dreamcore Remote
+
+pack.name=Dreamcore: Liminal Spaces
+pack.description=Espacios liminales, portales procedurales y el horror del vacío.

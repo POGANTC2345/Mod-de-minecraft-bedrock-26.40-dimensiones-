@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "dreamcore:faceless",
+      "materials": { "default": "entity_alphatest" },
+      "textures": { "default": "textures/entity/faceless" },
+      "geometry": { "default": "geometry.faceless" },
+      "animations": {
+        "idle": "animation.faceless.idle",
+        "walk": "animation.faceless.walk",
+        "look_at_target": "animation.common.look_at_target"
+      },
+      "scripts": {
+        "animate": [
+          "idle",
+          { "walk": "query.is_moving" },
+          "look_at_target"
+        ]
+      },
+      "render_controllers": [ "controller.render.faceless" ],
+      "spawn_egg": {
+        "base_color": "#c8b8a0",
+        "overlay_color": "#8a7a68"
+      }
+    }
+  }
+}

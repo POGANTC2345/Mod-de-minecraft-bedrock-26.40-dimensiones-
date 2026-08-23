@@ -1,0 +1,25 @@
+{
+  "format_version": "1.14.0",
+  "music_definitions": {
+    "dreamcore.hum_fluorescent": {
+      "event_name": "dreamcore:hum_fluorescent",
+      "min_delay": 0,
+      "max_delay": 0
+    },
+    "dreamcore.hum_pool": {
+      "event_name": "dreamcore:hum_pool",
+      "min_delay": 0,
+      "max_delay": 0
+    },
+    "dreamcore.hum_low": {
+      "event_name": "dreamcore:hum_low",
+      "min_delay": 0,
+      "max_delay": 0
+    },
+    "dreamcore.music_box": {
+      "event_name": "dreamcore:music_box",
+      "min_delay": 0,
+      "max_delay": 0
+    }
+  }
+}

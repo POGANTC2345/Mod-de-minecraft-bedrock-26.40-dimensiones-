@@ -1,0 +1,25 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": { "identifier": "dreamcore:fog_aqua" },
+    "distance": {
+      "air": {
+        "fog_color": "#7FC8C8",
+        "fog_start": 2,
+        "fog_end": 12,
+        "render_distance_type": "fixed"
+      }
+    },
+    "volumetric": {
+      "density": {
+        "air": { "zero_density_height": 30, "max_density": 0.85 }
+      },
+      "media_coefficients": {
+        "air": {
+          "scattering": [0.15, 0.15, 0.15],
+          "absorption": [0.02, 0.02, 0.02]
+        }
+      }
+    }
+  }
+}

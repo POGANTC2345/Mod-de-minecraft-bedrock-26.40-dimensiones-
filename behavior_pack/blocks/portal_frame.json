@@ -1,0 +1,23 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:block": {
+    "description": {
+      "identifier": "dreamcore:portal_frame",
+      "menu_category": { "category": "construction" }
+    },
+    "components": {
+      "minecraft:destructible_by_explosion": { "explosion_resistance": 1200 },
+      "minecraft:destructible_by_mining": { "seconds_to_destroy": 1200 },
+      "minecraft:light_emission": 15,
+      "minecraft:map_color": "#8A5CFF",
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "portal_frame",
+          "render_method": "opaque",
+          "face_dimming": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "resource_pack_name": "dreamcore",
+  "texture_name": "atlas.terrain",
+  "padding": 8,
+  "num_mip_levels": 4,
+  "texture_data": {
+    "yellow_wallpaper": { "textures": "textures/blocks/yellow_wallpaper" },
+    "wet_carpet": { "textures": "textures/blocks/wet_carpet" },
+    "ceiling_tile": { "textures": "textures/blocks/ceiling_tile" },
+    "faded_wallpaper": { "textures": "textures/blocks/faded_wallpaper" },
+    "fluorescent_light": { "textures": "textures/blocks/fluorescent_light" },
+    "portal_frame": { "textures": "textures/blocks/portal_frame" }
+  }
+}

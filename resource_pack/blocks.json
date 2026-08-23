@@ -1,0 +1,8 @@
+{
+  "format_version": [1, 1, 0],
+  "dreamcore:yellow_wallpaper": { "textures": "yellow_wallpaper", "sound": "cloth" },
+  "dreamcore:wet_carpet": { "textures": "wet_carpet", "sound": "cloth" },
+  "dreamcore:ceiling_tile": { "textures": "ceiling_tile", "sound": "stone" },
+  "dreamcore:faded_wallpaper": { "textures": "faded_wallpaper", "sound": "cloth" },
+  "dreamcore:fluorescent_light": { "textures": "fluorescent_light", "sound": "glass" }
+}
